@@ -5,7 +5,9 @@ import Review from "../models/review.js"
 //@route /api/reviews
 //@access PUBLIC
 const getReviews = asyncHandler(async (req, res) => {
-  const reviews = await Review.find({})
+  const reviews = await Review.find({
+    filmId: req.params.id,
+  })
 
   res.json(reviews)
 })
@@ -14,7 +16,7 @@ const getReviews = asyncHandler(async (req, res) => {
 //@route /api/reviews
 //@access PUBLIC
 const createReview = asyncHandler(async (req, res) => {
-  const { name, review, rating } = req.body
+  const { filmId, name, review, rating } = req.body
 
   const createdReview = await Review.create({
     filmId,
