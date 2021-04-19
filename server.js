@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js"
 import connectDb from "./config/db.js"
 import reviewRoutes from "./routes/reviewRoutes.js"
-
+import cinemaRoutes from "./routes/cinemaRoutes.js"
 //load .env file to process.env
 dotenv.config()
 
@@ -17,6 +17,9 @@ app.use(express.json())
 
 //Reviews routes
 app.use("/api/reviews", reviewRoutes)
+
+//cinemas routes
+app.use("/api/cinemas", cinemaRoutes)
 
 //404 Error, if the url not found
 app.use(notFound)
